@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Design system — Competitor Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css"><link rel="stylesheet" href="base.css"><link rel="stylesheet" href="components.css">
+<style>main{max-width:1040px;margin:0 auto;padding:32px 20px 80px}.row{display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center}.demo{position:relative}.demo .dr{position:absolute;inset:0;z-index:5;min-height:360px}</style></head>
+<body><main>
+<div class="page-hd"><div><div class="page-title">Design system</div><div class="page-sub">Competitor Intelligence · tokens &amp; components</div></div></div>
+
+<div class="card"><div class="card-hd"><div class="card-title">Colour tokens</div><div class="card-sub">tokens.css</div></div><div class="sg" id="sw"></div></div>
+
+<div class="card"><div class="card-hd"><div class="card-title">Typography</div><div class="card-sub">--ff-display / --ff-ui / --ff-mono</div></div>
+<div class="page-title" style="font-size:var(--fs-2xl)">Playfair Display — koppen</div>
+<p style="font-family:var(--ff-ui);font-size:var(--fs-md);margin:8px 0">Outfit — interface en lopende tekst (14px / 1.55).</p>
+<div class="page-sub">DM Mono — labels, cijfers, metadata</div></div>
+
+<div class="card"><div class="card-hd"><div class="card-title">Spacing &amp; radius</div><div class="card-sub">--sp-1…7 · --r / --rl / --rxl</div></div>
+<div class="row" style="align-items:flex-end"><div style="width:var(--sp-1);height:var(--sp-1);background:var(--red)"></div><div style="width:var(--sp-2);height:var(--sp-2);background:var(--red)"></div><div style="width:var(--sp-3);height:var(--sp-3);background:var(--red)"></div><div style="width:var(--sp-4);height:var(--sp-4);background:var(--red)"></div><div style="width:var(--sp-5);height:var(--sp-5);background:var(--red)"></div><div style="width:var(--sp-6);height:var(--sp-6);background:var(--red)"></div><div style="width:var(--sp-7);height:var(--sp-7);background:var(--red)"></div>
+<div style="width:60px;height:60px;background:var(--sf3);border-radius:var(--r)"></div><div style="width:60px;height:60px;background:var(--sf3);border-radius:var(--rl)"></div><div style="width:60px;height:60px;background:var(--sf3);border-radius:var(--rxl)"></div></div></div>
+
+<div class="card"><div class="card-hd"><div class="card-title">Buttons, badges &amp; ranks</div><div class="card-sub">.btn · .badge · .rb</div></div>
+<div class="row"><button class="btn btn-primary">Primair</button><button class="btn btn-ghost">Ghost</button><button class="btn btn-ghost btn-sm">Klein</button>
+<span class="badge b-up">↑ b-up</span><span class="badge b-dn">↓ b-dn</span><span class="badge b-warn">b-warn</span><span class="badge b-info">b-info</span><span class="badge b-neu">b-neu</span>
+<span class="rb r1">1</span><span class="rb r2">2</span><span class="rb r3">3</span><span class="rb ry">4</span><span class="rb rn">5</span></div></div>
+
+<div class="card"><div class="card-hd"><div class="card-title">Stat cards</div><div class="card-sub">.sg · .sc · .sl · .sv</div></div>
+<div class="sg"><div class="sc"><div class="sl">Bezoekers</div><div class="sv">24.310</div></div><div class="sc"><div class="sl">Score</div><div class="sv red">78</div></div><div class="sc"><div class="sl">Groei</div><div class="sv green">+12%</div></div><div class="sc"><div class="sl">Let op</div><div class="sv gold">3</div></div><div class="sc ck"><div class="sl">Klikbaar (.ck)</div><div class="sv sm">Drill-down →</div></div></div></div>
+
+<div class="card"><div class="card-hd"><div class="card-title">Tabs, select &amp; bars</div><div class="card-sub">.tabg · .sel · .hbr</div></div>
+<div class="row" style="margin-bottom:16px"><div class="tabg"><button class="tabt">Week</button><button class="tabt active">Maand</button><button class="tabt">Kwartaal</button></div><select class="sel"><option>Alle kanalen</option><option>Organisch</option></select></div>
+<div class="hbl"><div class="hbr"><div class="hbn you">Edge.be</div><div class="hbt"><div class="hbf" style="width:72%;background:var(--red)"></div></div><div class="hbv">72%</div></div><div class="hbr ck"><div class="hbn">Concurrent</div><div class="hbt"><div class="hbf" style="width:55%;background:var(--blue)"></div></div><div class="hbv">55%</div></div></div></div>
+
+<div class="card"><div class="card-hd"><div class="card-title">Table</div><div class="card-sub">.tw · .dt · .you-row</div></div><div class="tw"><table class="dt"><thead><tr><th>Bedrijf</th><th>Score</th><th>Trend</th></tr></thead><tbody><tr class="you-row"><td>Edge.be</td><td>78</td><td><span class="t-up">↑ 4%</span></td></tr><tr class="ck"><td>Concurrent</td><td>83</td><td><span class="t-dn">↓ 2%</span></td></tr></tbody></table></div></div>
+
+<div class="card"><div class="card-hd"><div class="card-title">Compare &amp; pros/cons</div><div class="card-sub">.dg · .dc · .pc</div></div>
+<div class="dg"><div class="dc you"><h4>Jij</h4><div class="dbig red">42%</div></div><div class="dc"><h4>Concurrent</h4><div class="dbig green">35%</div></div></div>
+<div class="pc pos"><div class="pc-lbl">Sterker dan jij · Backlinks</div>1.240 vs 980 bij jou</div><div class="pc neg"><div class="pc-lbl">Zwakker dan jij · Laadsnelheid</div>LCP 4.2s vs 3.0s</div></div>
+
+<div class="card"><div class="card-hd"><div class="card-title">Drill-down drawer</div><div class="card-sub">.dr · .dr-p · #dr-bc</div></div>
+<div class="demo"><button class="btn btn-primary btn-sm" onclick="document.getElementById('dr').classList.add('on')">Open drawer</button>
+<div class="dr" id="dr"><div class="dr-bg" onclick="this.parentElement.classList.remove('on')"></div><div class="dr-p"><div class="dr-hd"><div id="dr-bc"><a>Rapport</a><span>›</span><b>Bounce rate</b></div><button class="btn-icon" onclick="document.getElementById('dr').classList.remove('on')">✕</button></div><div id="dr-b"><div class="page-title">Bounce rate</div><div class="page-sub">Metric-analyse</div></div></div></div></div></div>
+</main>
+<script>
+const T=['bg','bg2','sf','sf2','sf3','bdr','bdr2','tx','tx2','tx3','red','red2','red-glow','gold','gold-glow','green','blue','teal','violet','c-danger'],cs=getComputedStyle(document.documentElement);
+document.getElementById('sw').innerHTML=T.map(n=>`<div class="sc" style="padding:10px"><div style="height:44px;border-radius:6px;background:var(--${n});border:1px solid var(--bdr2);margin-bottom:8px"></div><div class="sl" style="margin:0">--${n}</div><div style="font:11px var(--ff-mono);color:var(--tx2)">${cs.getPropertyValue('--'+n).trim()}</div></div>`).join('');
+document.querySelectorAll('.tabg').forEach(g=>g.onclick=e=>{if(e.target.classList.contains('tabt')){g.querySelectorAll('.tabt').forEach(t=>t.classList.remove('active'));e.target.classList.add('active')}});
+</script></body></html>

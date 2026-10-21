@@ -1,0 +1,19 @@
+/* design-system/responsive.css — Breakpoints (480 / 768 / 460px). */
+@media(max-width:480px){.url-wrap{flex-wrap:wrap;padding:8px}.url-wrap input{flex:1 1 100%;padding:6px 8px}.url-wrap .btn{flex:1 1 100%}.cfg-footer .btn,.cfg-footer .adv-btn{width:100%;justify-content:center}}
+@media(max-width:768px){.dr-hd{padding:10px 14px}#dr-b{padding:14px 14px 40px}}
+/* RESPONSIVE */
+@media(max-width:768px){
+  .sidebar{display:none}
+  body.dash .bot-nav{display:flex}
+  .dash-main{padding:16px 14px 74px}
+  .dg{grid-template-columns:1fr}
+  .g2{grid-template-columns:1fr}
+  .sg{grid-template-columns:1fr 1fr}
+  .l-hero h1{font-size:32px}
+  #screen-landing{padding:44px 16px 60px}
+  .cfg{padding:16px}
+}
+@media(max-width:460px){
+  .sg{grid-template-columns:1fr 1fr}
+  .page-title{font-size:19px}
+}

@@ -1,0 +1,27 @@
+/* design-system/base.css — Reset, page canvas, top nav, buttons and screen switching. */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100vh}
+body{font-family:var(--ff-ui);background:var(--bg);color:var(--tx);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
+/* noise */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.025;pointer-events:none;z-index:9999;background-size:256px}
+body{overflow-x:clip}
+/* NAV */
+.nav{position:sticky;top:0;z-index:var(--z-nav);height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:rgba(7,9,14,.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--bdr)}
+.logo{font-family:var(--ff-display);font-weight:700;font-size:20px;color:var(--red2);letter-spacing:-.3px;cursor:pointer}
+.logo em{color:var(--tx);font-style:italic;font-weight:400;font-size:16px;margin-left:2px}
+.nav-r{display:flex;align-items:center;gap:10px}
+
+/* BUTTONS */
+.btn{padding:7px 18px;border-radius:var(--r);font-size:13px;font-weight:500;font-family:var(--ff-ui);cursor:pointer;border:1px solid transparent;transition:all .16s;line-height:1}
+.btn-ghost{background:transparent;border-color:var(--bdr2);color:var(--tx2)}
+.btn-ghost:hover{background:var(--sf2);color:var(--tx)}
+.btn-primary{background:var(--red);color:#fff;border-color:var(--red);font-weight:600;letter-spacing:.01em}
+.btn-primary:hover{background:var(--red2);border-color:var(--red2)}
+.btn-sm{padding:5px 12px;font-size:12px}
+.btn-icon{background:var(--sf2);border:1px solid var(--bdr);color:var(--tx2);width:30px;height:30px;padding:0;border-radius:var(--r);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:.15s;font-size:13px}
+.btn-icon:hover{background:var(--sf3);color:var(--tx)}
+
+/* SCREENS */
+.screen{display:none;opacity:0;transition:opacity .2s}
+.screen.active{display:block;opacity:1}
+#screen-dashboard.active{display:flex;opacity:1}

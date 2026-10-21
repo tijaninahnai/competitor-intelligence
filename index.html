@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Competitor — Intelligence Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<link rel="stylesheet" href="design-system/tokens.css">
+<link rel="stylesheet" href="design-system/base.css">
+<link rel="stylesheet" href="design-system/pages.css">
+<link rel="stylesheet" href="design-system/dashboard.css">
+<link rel="stylesheet" href="design-system/components.css">
+<link rel="stylesheet" href="design-system/responsive.css">
+</head>
+<body>
+
+<nav class="nav">
+  <span class="logo" onclick="goTo('landing')">Competitor<em>.</em></span>
+  <div class="nav-r">
+    <button class="btn btn-ghost" onclick="goTo('landing')">Log in</button>
+    <button class="btn btn-primary">Registreer</button>
+  </div>
+</nav>
+
+<!-- ===== LANDING ===== -->
+<div id="screen-landing" class="screen active">
+  <div class="l-eyebrow"><span>Intelligence Platform</span></div>
+  <div class="l-hero">
+    <h1><em>Vind</em> jouw<br>concurrenten</h1>
+    <p>Vul jouw website URL in. Wij analyseren de markt, identificeren concurrenten en brengen alles in kaart.</p>
+  </div>
+  <div class="url-wrap">
+    <input id="url-inp" type="text" placeholder="Website URL — bv. edge.be" value="edge.be">
+    <button class="btn btn-primary" onclick="startAnalysis()">ANALYSEER</button>
+  </div>
+  <div class="cfg">
+    <div style="margin-bottom:16px"><div class="cfg-label">Sector</div><input class="cfg-in" type="text" value="AI &amp; Digital marketing"></div>
+    <div style="margin-bottom:16px"><div class="cfg-label">Korte beschrijving</div><textarea class="cfg-in">Wij zijn een bedrijf in digitale marketing en AI-processen met België als grootste markt.</textarea></div>
+    <div>
+      <div class="cfg-label">Tags</div>
+      <div class="tags" id="tags">
+        <span class="tag">AI-processen<span class="x" onclick="rmTag(this)">×</span></span>
+        <span class="tag">Digitale marketing<span class="x" onclick="rmTag(this)">×</span></span>
+        <span class="tag">SEO-optimalisatie<span class="x" onclick="rmTag(this)">×</span></span>
+        <span class="tag">België<span class="x" onclick="rmTag(this)">×</span></span>
+      </div>
+      <div class="tag-row">
+        <input id="tag-inp" type="text" placeholder="Voeg een tag toe" onkeydown="if(event.key==='Enter')addTag()">
+        <button class="btn-plus" onclick="addTag()">+</button>
+      </div>
+    </div>
+    <div class="cfg-footer">
+      <button class="btn btn-primary" style="padding:10px 22px;font-size:14px" onclick="startAnalysis()">BEKIJK JE RESULTAAT →</button>
+      <button class="adv-btn" onclick="toggleAdv()">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 2.5h11M3 6.5h7M5 10.5h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        Geavanceerde Filters
+      </button>
+    </div>
+    <div id="adv-panel" style="display:none">
+      <div class="cfg-div"></div>
+      <div class="adv-tier">⚡ Gratis versie: algemene ranking &amp; adviezen. Upgrade voor alle datapunten &amp; exportmogelijkheden.</div>
+      <div class="sel-row"><button class="btn-sel" onclick="saAll(true)">Selecteer alles</button><button class="btn-sel" onclick="saAll(false)">Deselecteer alles</button></div>
+      <div id="adv-checks"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LOADING ===== -->
+<div id="screen-loading" class="screen">
+  <div class="ld-head" id="ld-head">Analyseren van edge.be…</div>
+  <div class="ld-sub">Even geduld — dit duurt zo'n 10–20 seconden</div>
+  <div class="ld-steps" id="ld-steps"></div>
+  <div class="prog-track"><div class="prog-fill" id="prog-fill"></div></div>
+</div>
+
+<!-- ===== DASHBOARD ===== -->
+<div id="screen-dashboard" class="screen">
+  <aside class="sidebar">
+    <div class="sb-group-label">Analyse</div>
+    <div class="sb-item active" data-sec="overview" onclick="showSection('overview')"><span class="sb-ico">🏆</span>Overzicht</div>
+    <div class="sb-item" data-sec="traffic" onclick="showSection('traffic')"><span class="sb-ico">📊</span>Verkeer &amp; Bezoekers</div>
+    <div class="sb-item" data-sec="sources" onclick="showSection('sources')"><span class="sb-ico">🔀</span>Verkeersbronnen</div>
+    <div class="sb-item" data-sec="seo" onclick="showSection('seo')"><span class="sb-ico">🔍</span>SEO &amp; Metingen</div>
+    <div class="sb-item" data-sec="tech" onclick="showSection('tech')"><span class="sb-ico">⚡</span>Technisch &amp; Prestaties</div>
+    <div class="sb-item" data-sec="conv" onclick="showSection('conv')"><span class="sb-ico">🎯</span>Conversie</div>
+    <div class="sb-item" data-sec="ai" onclick="showSection('ai')"><span class="sb-ico">🔮</span>AI-Voorspellingen</div>
+    <div class="sb-item" data-sec="diff" onclick="showSection('diff')"><span class="sb-ico">⚖️</span>Concurrentieverschillen</div>
+  </aside>
+  <main class="dash-main" id="dash-main"></main>
+</div>
+
+<div class="dr" id="dr"><div class="dr-bg" onclick="drClose()"></div><div class="dr-p"><div class="dr-hd"><div id="dr-bc"></div><button class="btn-icon" onclick="drClose()" aria-label="Sluiten">✕</button></div><div id="dr-b"></div></div></div>
+<!-- MOBILE BOTTOM NAV -->
+<div class="bot-nav" id="bot-nav">
+  <div class="bn-item active" data-sec="overview" onclick="showSection('overview')"><span class="bn-ico">🏆</span>Ranking</div>
+  <div class="bn-item" data-sec="traffic" onclick="showSection('traffic')"><span class="bn-ico">📊</span>Verkeer</div>
+  <div class="bn-item" data-sec="seo" onclick="showSection('seo')"><span class="bn-ico">🔍</span>SEO</div>
+  <div class="bn-item" data-sec="ai" onclick="showSection('ai')"><span class="bn-ico">🔮</span>AI</div>
+  <div class="bn-item" data-sec="diff" onclick="showSection('diff')"><span class="bn-ico">⚖️</span>Verschil</div>
+</div>
+
+<script src="src/data/companies.js"></script>
+<script src="src/core/state.js"></script>
+<script src="src/data/reference.js"></script>
+<script src="src/core/utils.js"></script>
+<script src="src/core/charts.js"></script>
+<script src="src/core/router.js"></script>
+<script src="src/views/landing.js"></script>
+<script src="src/views/overview.js"></script>
+<script src="src/views/traffic.js"></script>
+<script src="src/views/sources.js"></script>
+<script src="src/views/seo.js"></script>
+<script src="src/views/tech.js"></script>
+<script src="src/views/conversion.js"></script>
+<script src="src/views/ai.js"></script>
+<script src="src/views/diff.js"></script>
+<script src="src/views/report.js"></script>
+<script src="src/drill/drawer.js"></script>
+<script src="src/core/events.js"></script>
+<script src="src/main.js"></script>
+</body>
+</html>

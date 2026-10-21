@@ -1,0 +1,26 @@
+/* design-system/tokens.css — Design tokens: colours, radii, spacing, type, motion, layers. */
+:root{
+  --bg:#07090E;--bg2:#0B0E18;--sf:#0F1421;--sf2:#141B2A;--sf3:#1A2236;
+  --bdr:rgba(255,255,255,.06);--bdr2:rgba(255,255,255,.11);
+  --tx:#E4E8F0;--tx2:#8694A8;--tx3:#4A5668;
+  --red:#D91F41;--red2:#F03358;--red-glow:rgba(217,31,65,.14);
+  --gold:#E8A520;--gold-glow:rgba(232,165,32,.11);
+  --green:#22C55E;--blue:#4F8EF0;--teal:#14B8A6;--violet:#8B5CF6;
+  --nav:58px;--sb:212px;
+  --r:8px;--rl:13px;--rxl:16px;
+  --sh:0 1px 3px rgba(0,0,0,.5);
+}
+
+/* ---- Semantic scales (new): use these for all new work ---- */
+:root{
+  /* spacing — 4px grid */
+  --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:28px;--sp-7:40px;
+  /* typography */
+  --ff-display:'Playfair Display',serif;--ff-ui:'Outfit',sans-serif;--ff-mono:'DM Mono',monospace;
+  --fs-xs:10px;--fs-sm:12px;--fs-md:14px;--fs-lg:17px;--fs-xl:22px;--fs-2xl:34px;
+  /* status colours */
+  --c-success:var(--green);--c-danger:#F87171;--c-warning:var(--gold);--c-info:var(--blue);
+  /* elevation, motion, layers */
+  --sh-lg:0 12px 40px rgba(0,0,0,.45);--ease:cubic-bezier(.4,0,.2,1);--t-fast:.14s;--t-med:.25s;
+  --z-nav:100;--z-bot:200;--z-drawer:300;
+}
